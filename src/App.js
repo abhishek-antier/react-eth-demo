@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+const App = () => {
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [instruction, setInstruction] = useState("waiting for connection with wallet");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      { window.ethereum ? 
+        (walletConnected ? <h1>Connected</h1> : instruction)
+        : "Metamast or other EIP-1102/EIP-1193 complian wallet not found !"
+    }
     </div>
-  );
+  )
 }
 
 export default App;
