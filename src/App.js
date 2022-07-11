@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import Web3 from 'web3';
+import AppAuthenticated from './components/AppAuthenticated';
 
 const App = () => {
 
@@ -28,8 +29,10 @@ const App = () => {
   return (
     <div>
       { window.ethereum ? 
-        (walletConnected ? <h1>Connected</h1> : instruction)
-        : "Metamast or other EIP-1102/EIP-1193 complian wallet not found !"
+        (walletConnected ? 
+        <AppAuthenticated />
+         : instruction
+         ) : "Metamast or other EIP-1102/EIP-1193 complian wallet not found !"
     }
     </div>
   )
